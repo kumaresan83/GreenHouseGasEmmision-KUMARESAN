@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenhouse Gas Emission Predictor</title>
+    <!-- Link to Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to our custom stylesheet for project-specific styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+
+
+    <!-- Welcome Page Container -->
+    <div id="welcome-page" class="w-full max-w-4xl min-h-[600px] rounded-xl shadow-lg overflow-hidden flex form-container">
+        <!-- Left Panel with Text -->
+        <div class="welcome-left flex-1 flex flex-col justify-center space-y-4 p-8 md:p-12">
+            <p class="text-gray-300 text-sm font-light uppercase tracking-wider">Cloud Computing & GHG Emissions</p>
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight">Greenhouse Gas<br>Emissions in<br>Data Centres</h1>
+            <div class="pt-4">
+                <button id="start-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-200">
+                    Start
+                </button>
+            </div>
+        </div>
+        <!-- Right Panel with Image - Using a background color to represent the image -->
+        <div class="welcome-right flex-1 hidden md:block"></div>
+    </div>
+
+    <!-- Main Predictor Page Container -->
+    <div id="predictor-page" class="hidden form-container rounded-xl shadow-lg p-8 md:p-12 w-full max-w-4xl border-2">
+        
+        <!-- Header Section -->
+        <div class="flex items-center space-x-4 mb-8">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-green-700" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+            <div>
+                <h1 class="text-3xl font-bold text-green-800">Greenhouse Gas Emission Predictor</h1>
+                <p class="text-gray-600 mt-2">Estimate total emissions based on supply chain factors and data quality metrics.</p>
+            </div>
+        </div>
+
+        <hr class="my-6 border-green-200">
+
+        <!-- Input Form Section -->
+        <form id="predictor-form-content" class="space-y-6">
+            
+            <!-- Product Details -->
+            <div class="grid md:grid-cols-2 gap-6 mt-8">
+                <!-- Substance -->
+                <div class="flex items-center space-x-2">
+                    <label for="substance" class="w-32 font-medium text-gray-700">Type of Gas:</label>
+                    <select id="substance" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                        <option>carbon dioxide</option>
+                        <option>methane</option>
+                        <option>nitrous oxide</option>
+                        <option>other GHGs</option>
+                    </select>
+                </div>
+                <!-- Unit -->
+                <div class="flex items-center space-x-2">
+                    <label for="unit" class="w-32 font-medium text-gray-700">Measurement Unit:</label>
+                    <select id="unit" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                        <option>kg/2018 USD, purchaser price</option>
+                        <option>kg CO2e/2018 USD, purchaser price</option>
+                    </select>
+                </div>
+                <!-- Supply without Margins -->
+                <div class="flex items-center space-x-2">
+                    <label for="supply-wo-margin" class="w-32 font-medium text-gray-700">Est. Emissions:</label>
+                    <input type="number" id="supply-wo-margin" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="0.0" min="0">
+                </div>
+                <!-- Margin -->
+                <div class="flex items-center space-x-2">
+                    <label for="margin" class="w-32 font-medium text-gray-700">Margin of Error:</label>
+                    <input type="number" id="margin" class="flex-1 rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" placeholder="0.0" min="0">
+                </div>
+            </div>
+
+            <!-- Data Quality Sliders -->
+            <h2 class="text-2xl font-bold text-green-800 pt-6">Data Quality</h2>
+            <p class="text-gray-600 italic">Please rate the quality of your data on a scale from 0.0 (low quality) to 1.0 (high quality).</p>
+            
+            <div class="space-y-4">
+                <!-- Reliability of Data -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label for="dq-reliability" class="text-lg font-medium text-gray-700">Reliability of Data</label>
+                        <span id="dq-reliability-value" class="text-green-700 font-bold">0.00</span>
+                    </div>
+                    <input type="range" id="dq-reliability" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0" max="1" step="0.01" value="0.0">
+                </div>
+                <!-- Timeliness of Data -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label for="dq-temporal" class="text-lg font-medium text-gray-700">Timeliness of Data</label>
+                        <span id="dq-temporal-value" class="text-green-700 font-bold">0.00</span>
+                    </div>
+                    <input type="range" id="dq-temporal" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0" max="1" step="0.01" value="0.0">
+                </div>
+                <!-- Geographic Relevance -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label for="dq-geo" class="text-lg font-medium text-gray-700">Geographic Relevance</label>
+                        <span id="dq-geo-value" class="text-green-700 font-bold">0.00</span>
+                    </div>
+                    <input type="range" id="dq-geo" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0" max="1" step="0.01" value="0.0">
+                </div>
+                <!-- Technological Relevance -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label for="dq-tech" class="text-lg font-medium text-gray-700">Technological Relevance</label>
+                        <span id="dq-tech-value" class="text-green-700 font-bold">0.00</span>
+                    </div>
+                    <input type="range" id="dq-tech" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0" max="1" step="0.01" value="0.0">
+                </div>
+                <!-- Data Collection Quality -->
+                <div class="space-y-1">
+                    <div class="flex justify-between items-center">
+                        <label for="dq-data" class="text-lg font-medium text-gray-700">Data Collection Quality</label>
+                        <span id="dq-data-value" class="text-green-700 font-bold">0.00</span>
+                    </div>
+                    <input type="range" id="dq-data" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" min="0" max="1" step="0.01" value="0.0">
+                </div>
+            </div>
+
+            <!-- Calculation and Output Section -->
+            <div class="flex flex-col items-center justify-center space-y-4 pt-8">
+                <button type="button" id="predict-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-200">
+                    Predict Emission Factor
+                </button>
+                <div id="output-container" class="mt-4 p-4 bg-green-50 text-green-900 border-2 border-green-300 rounded-lg text-xl font-bold flex items-center justify-center space-x-4 w-full">
+                    <span id="result-text">Predicted Factor = 0.0000</span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="fixed bottom-4 left-4 z-10">
+        <button id="welcome-nav-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-200">
+            <Welcome></Welcome>
+        </button>
+    </div>
+    <div class="fixed bottom-4 right-4 z-10">
+        <button id="next-nav-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-200">
+            Next >
+        </button>
+    </div>
+
+    <!-- Link to our JavaScript file -->
+    <script src="app.js"></script>
+</body>
+</html>

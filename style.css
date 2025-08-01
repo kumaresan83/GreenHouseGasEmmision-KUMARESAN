@@ -1,0 +1,51 @@
+/* Custom CSS for the multi-page application */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e6f7e6; /* Light green background for the predictor page */
+}
+
+
+.welcome-left {
+    background-color: #00004d; 
+    color: white;
+}
+
+.welcome-right {
+    background-image: url('welcome-image.png');  /* update path if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+
+
+
+/* Base styles for the form container */
+.form-container {
+    background-color: #ffffff;
+    border-color: #669933; /* Green border */
+}
+.welcome-right {
+     /* use 'img.jpg' if that's the file name */
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Custom color overrides for Tailwind classes */
+.text-green-800 { color: #294c77; }
+.text-green-700 { color: #294c77; }
+.bg-green-600 { background-color: #669933; }
+.hover\:bg-green-700:hover { background-color: #55802b; }
+.focus\:ring-green-500:focus { border-color: #669933; }
+.focus\:border-green-500:focus { border-color: #669933; }
+.text-green-900 { color: #294c77; }
+.bg-green-50 { background-color: #f0fdf4; }
+.border-green-300 { border-color: #d1fae5; }
+
+/* Utility class to hide elements */
+.hidden {
+    display: none;
+}
