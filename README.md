@@ -28,12 +28,16 @@ Python / R for data processing and modeling
 Pandas, NumPy, Matplotlib, Scikit-learn
 
 Climate datasets (e.g., IPCC, NASA, EDGAR)
-Step 1:
+
+
+# Step 1:
 
 <img width="1536" height="1024" alt="ChatGPT Image Aug 1, 2025, 08_05_52 PM" src="https://github.com/user-attachments/assets/d85f8b30-4e7c-4404-823a-a03dd355e9aa" />
 
 
-Step 2:
+
+
+# Step 2:
 🟢 Greenhouse Gas Emission Predictor – Field Explanations
 🔹 Type of Gas
 Dropdown to select the greenhouse gas you want to analyze (e.g., Carbon Dioxide, Methane, Nitrous Oxide).
