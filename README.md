@@ -38,46 +38,43 @@ Climate datasets (e.g., IPCC, NASA, EDGAR)
 
 
 # Step 2:
-🟢 Greenhouse Gas Emission Predictor – Field Explanations
-🔹 Type of Gas
+
+
+# 🟢 Greenhouse Gas Emission Predictor – Field Explanations
+🔹 Type of Gas : 
 Dropdown to select the greenhouse gas you want to analyze (e.g., Carbon Dioxide, Methane, Nitrous Oxide).
 
 This determines which emission factors are applied.
 
-🔹 Measurement Unit
+🔹 Measurement Unit :
 Specifies the unit for emissions (e.g., kg/2018 USD, purchaser price).
 
 This helps standardize the calculation across different economic or physical inputs.
 
-🔹 Est. Emissions
+🔹 Est. Emissions  :
 The system's estimated emissions based on the input values and selected gas type.
 
 Automatically calculated when prediction is run.
 
-🔹 Margin of Error
+🔹 Margin of Error :
 Represents the uncertainty in the prediction, often based on data quality and source variation.
 
-🧪 Data Quality Metrics (each rated 0.0 to 1.0)
+# 🧪 Data Quality Metrics (each rated 0.0 to 1.0)
 These sliders allow the user to self-assess and adjust the quality of input data. Higher values mean higher confidence:
 
-Reliability of Data
-
+Reliability of Data :
 Trustworthiness of the data source (e.g., official government records vs. unknown sources).
 
-Timeliness of Data
-
+Timeliness of Data :
 How current or up-to-date the data is (recent year = better quality).
 
-Geographic Relevance
-
+Geographic Relevance :
 Whether the data reflects local/regional conditions instead of generic or global averages.
 
-Technological Relevance
-
+Technological Relevance :
 Appropriateness of the data based on current technology used (e.g., outdated vs. modern methods).
 
-Data Collection Quality
-
+Data Collection Quality :
 Reflects how rigorously and accurately the data was gathered (e.g., surveys, sensors, audits).
 
 
